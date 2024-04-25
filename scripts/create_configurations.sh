@@ -41,7 +41,11 @@ access_token=$(extract_access_token "$json_structure")
 echo -e "\n\n************************  CREATING ACCOUNTS CONFIGURATION ***********************\n"
 
 # Base64 encode the accounts configuration yaml file and update the value in the t3-account-config.json file
-#../config/$ENVIRONMENT_TO_DEPLOY/
+#below works on mac base64 version... if using linux, please change to base64 -w0 ..filepath
+accountconfig=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-account-yaml.yaml | base64)
+sed -i -e  "s/REPLACE_DATA/${accountconfig}/" t3-account-config.json > t3-account-config_temp.json
+#update the name value of the account configuration in the t3-account-config.json file
+sed -i -e  "s/REPLACE_NAME/${account_configuration_name}/" t3-account-config_temp.json
 
 ###### Create or update Configurations (PUT)
 ## Accounts Configuration
@@ -51,14 +55,16 @@ curl --request PUT \
   --header "X-IBM-Client-Id: $client_id" \
   --header 'accept: application/json' \
   --header 'Content-Type: application/json' \
-  --data "@t3-account-config.json"
+  --data "@t3-account-config_temp.json"
 
 echo -e "\n\n************************  CREATING BARAUTH CONFIGURATION ***********************\n"
 
 # Base64 encode the barauth configuration json file and update the value in the t3-barauth-config.json file
-barauth=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-barauth-json.json | openssl base64)
-#sed -e "s/replace-with-namespace/${DEPLOYMENT_NAMESPACE}/" -e "s~replace-with-barauth-name~${BAR_NAME}-barauth~" -e "s~replace-with-barauth-base64~${barauth}~" ${CRs_template_folder}/configuration_barauth.yaml > ${CRs_generated_folder}/configurations/barauth-generated.yaml
-sed -e "s/REPLACE/${barauth}/" t3-barauth-config.json
+#below works on mac base64 version... if using linux, please change to base64 -w0 ..filepath
+barauth=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-barauth-json.json | base64)
+sed -i -e  "s/REPLACE_DATA/${barauth}/" t3-barauth-config.json > t3-barauth-config_temp.json
+#update the name value of the account configuration in the t3-account-config.json file
+sed -i -e  "s/REPLACE_NAME/${barauth_configuration_name}/" t3-barauth-config_temp.json
 
 ## Barauth Configuration
 curl --request PUT \
@@ -67,7 +73,7 @@ curl --request PUT \
   --header "X-IBM-Client-Id: $client_id" \
   --header 'accept: application/json' \
   --header 'Content-Type: application/json' \
-  --data '@t3-barauth-config.json'
+  --data '@t3-barauth-config_temp.json'
 
 echo -e "\n\n************************  CREATING INTEGRATION SERVER ***********************\n"
 

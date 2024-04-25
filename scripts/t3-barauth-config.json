@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "name": "ibm-t3-github-barauth"
+    "name": "REPLACE_NAME"
   },
   "spec": {
     "type": "barauth",
-    "data": "REPLACE",
+    "data": "REPLACE_DATA",
     "description": "Barauth configuration for basic authentication to retrieve bar from github"
   }
 }
