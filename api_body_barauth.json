@@ -1,0 +1,10 @@
+{
+  "spec": {
+    "type": "barauth",
+    "data": "eyJhdXRoVHlwZSI6IkJBU0lDX0FVVEgiLCJjcmVkZW50aWFscyI6eyJ1c2VybmFtZSI6ImlzYWxrb3ZpYyIsInBhc3N3b3JkIjoiZ2hwX0ZrT2tFSERodDBVcDJBODFPSjNSR0dQbU13dXlZeTFJWW5DaCJ9fQ==",
+    "description": "ivo-barauth-config"
+  },
+  "metadata": {
+    "name": "ivo-barauth-config"
+  }
+}

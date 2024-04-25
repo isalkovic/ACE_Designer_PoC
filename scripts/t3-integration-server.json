@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "name": "ibm-t3-integration-server"
+  },
+  "spec": {
+    "barURL": [
+      "https://raw.githubusercontent.com/isalkovic/ACE_Designer_PoC/9f91b3cab64254b21514ce6f141e308f0362c524/JTH-Customer-API.bar?token=GHSAT0AAAAAACRO6PW4TJZFVE7KOT4PTENAZRKEXUQ"
+    ],
+    "configurations": [
+      "ibm-t3-accounts",
+      "ibm-t3-github-barauth"
+    ],
+    "forceFlowBasicAuth": {
+      "enabled": false
+    },
+    "replicas": 1,
+    "template": {
+      "spec": {
+        "containers": [
+          {
+            "name": "runtime",
+            "resources": {
+              "limits": {
+                "cpu": "2000m",
+                "memory": "4096Mi"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

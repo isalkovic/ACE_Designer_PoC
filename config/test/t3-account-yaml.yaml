@@ -1,0 +1,11 @@
+accounts:
+  cloudantdb:
+    - name: Account 1
+      credentials:
+        username: 8461a950-9097-468d-a81b-abd2f078aca2-bluemix
+        password: 2692f9a398d7e97fb462643565b8dfd6
+        apiKey: JkPQ8xnHwuxxG1MX5lQjpfiEmLIwIS8v5D9OHgA67gXu
+      endpoint:
+        url: >-
+          8461a950-9097-468d-a81b-abd2f078aca2-bluemix.cloudantnosqldb.appdomain.cloud
+
