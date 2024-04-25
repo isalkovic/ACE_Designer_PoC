@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: JTH-Customer-API
+  x-ibm-name: jth-customer-api
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        CustomerId:
+          type: string
+        DocumentId:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        Company:
+          type: string
+      additionalProperties: false
+      description: ' '
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http
+paths:
+  /Customer:
+    post:
+      tags:
+        - Customer
+      summary: Create Customer.
+      operationId: Customer.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '201':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /Customer/{CustomerId}:
+    get:
+      tags:
+        - Customer
+      summary: Retrieve Customer by ID
+      operationId: Customer.findById
+      parameters:
+        - name: CustomerId
+          in: path
+          description: Customer id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /Customer/{CustomerId}/discard:
+    delete:
+      tags:
+        - Customer
+      summary: Delete Customer by ID
+      operationId: Customer.discard
+      parameters:
+        - name: CustomerId
+          in: path
+          description: Customer CustomerId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+x-ibm-configuration:
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - invoke:
+          title: Invoke flow
+          version: 2.0.0
+          verb: keep
+          target-url: $(app-connect-designer-url)$(request.path)
+          follow-redirects: false
+          timeout: 60
+          parameter-control:
+            type: blocklist
+          header-control:
+            type: blocklist
+          inject-proxy-headers: true
+          username: $(app-connect-designer-username)
+          password: $(app-connect-designer-password)
+security:
+  - basicAuth: []
