@@ -43,7 +43,7 @@ echo -e "\n\n************************  CREATING ACCOUNTS CONFIGURATION *********
 # Base64 encode the accounts configuration yaml file and update the value in the t3-account-config.json file
 #below works on mac base64 version... if using linux, please change to base64 -w0 ..filepath
 accountconfig=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-account-yaml.yaml | base64)
-sed -i -e  "s/REPLACE_DATA/${accountconfig}/" t3-account-config.json > t3-account-config_temp.json
+sed -e  "s/REPLACE_DATA/${accountconfig}/" t3-account-config.json > t3-account-config_temp.json
 #update the name value of the account configuration in the t3-account-config.json file
 sed -i -e  "s/REPLACE_NAME/${account_configuration_name}/" t3-account-config_temp.json
 
@@ -62,7 +62,7 @@ echo -e "\n\n************************  CREATING BARAUTH CONFIGURATION **********
 # Base64 encode the barauth configuration json file and update the value in the t3-barauth-config.json file
 #below works on mac base64 version... if using linux, please change to base64 -w0 ..filepath
 barauth=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-barauth-json.json | base64)
-sed -i -e  "s/REPLACE_DATA/${barauth}/" t3-barauth-config.json > t3-barauth-config_temp.json
+sed -e  "s/REPLACE_DATA/${barauth}/" t3-barauth-config.json > t3-barauth-config_temp.json
 #update the name value of the account configuration in the t3-account-config.json file
 sed -i -e  "s/REPLACE_NAME/${barauth_configuration_name}/" t3-barauth-config_temp.json
 
