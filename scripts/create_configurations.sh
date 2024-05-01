@@ -11,7 +11,7 @@ barauth_configuration_name="ibm-t3-github-barauth"
 integration_server_name="ibm-t3-integration-server"
 
 bar_file_location="../JTH-Customer-API.bar"
-bar_file_name="T3TestBar"
+bar_file_name="T3-Test-Bar"
 
 # Use test or prod, in lower case
 ENVIRONMENT_TO_DEPLOY="test"
@@ -57,7 +57,7 @@ curl --request PUT \
   --header 'Content-Type: application/json' \
   --data "@t3-account-config.json"
 
-echo -e "\n\n************************  CREATING BARAUTH CONFIGURATION ***********************\n"
+# echo -e "\n\n************************  CREATING BARAUTH CONFIGURATION ***********************\n"
 
 #
 # Note: BarAuth configuration is not needed when uploading the BAR file to the ACE dashboard,
@@ -65,18 +65,18 @@ echo -e "\n\n************************  CREATING BARAUTH CONFIGURATION **********
 #
 
 # Base64 encode the barauth configuration json file and update the value in the t3-barauth-config.json file
-barauth=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-barauth-json.json | openssl base64)
+# barauth=$( cat ../config/$ENVIRONMENT_TO_DEPLOY/t3-barauth-json.json | openssl base64)
 #sed -e "s/replace-with-namespace/${DEPLOYMENT_NAMESPACE}/" -e "s~replace-with-barauth-name~${BAR_NAME}-barauth~" -e "s~replace-with-barauth-base64~${barauth}~" ${CRs_template_folder}/configuration_barauth.yaml > ${CRs_generated_folder}/configurations/barauth-generated.yaml
-sed -e "s/REPLACE/${barauth}/" t3-barauth-config.json
+# sed -e "s/REPLACE/${barauth}/" t3-barauth-config.json
 
 ## Barauth Configuration
-curl --request PUT \
-  --url $api_server_url/v1/configurations/$barauth_configuration_name \
-  --header "Authorization: Bearer $access_token" \
-  --header "X-IBM-Client-Id: $client_id" \
-  --header 'accept: application/json' \
-  --header 'Content-Type: application/json' \
-  --data '@t3-barauth-config.json'
+# curl --request PUT \
+#   --url $api_server_url/v1/configurations/$barauth_configuration_name \
+#   --header "Authorization: Bearer $access_token" \
+#   --header "X-IBM-Client-Id: $client_id" \
+#   --header 'accept: application/json' \
+#   --header 'Content-Type: application/json' \
+#   --data '@t3-barauth-config.json'
 
 echo -e "\n\n************************  UPLOADING BAR FILE ********************************\n"
 
