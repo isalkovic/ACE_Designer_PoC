@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "name": "REPLACE_NAME"
+    "name": "ibm-t3-accounts"
   },
   "spec": {
     "type": "accounts",
-    "data": "REPLACE_DATA",
+    "data": "YWNjb3VudHM6CiAgY2xvdWRhbnRkYjoKICAgIC0gbmFtZTogQWNjb3VudCAxCiAgICAgIGNyZWRlbnRpYWxzOgogICAgICAgIHVzZXJuYW1lOiA4NDYxYTk1MC05MDk3LTQ2OGQtYTgxYi1hYmQyZjA3OGFjYTItYmx1ZW1peAogICAgICAgIHBhc3N3b3JkOiAyNjkyZjlhMzk4ZDdlOTdmYjQ2MjY0MzU2NWI4ZGZkNgogICAgICAgIGFwaUtleTogSmtQUTh4bkh3dXh4RzFNWDVsUWpwZmlFbUxJd0lTOHY1RDlPSGdBNjdnWHUKICAgICAgZW5kcG9pbnQ6CiAgICAgICAgdXJsOiA+LQogICAgICAgICAgODQ2MWE5NTAtOTA5Ny00NjhkLWE4MWItYWJkMmYwNzhhY2EyLWJsdWVtaXguY2xvdWRhbnRub3NxbGRiLmFwcGRvbWFpbi5jbG91ZA==",
     "description": "Accounts configuration for the Cloudant database"
   }
 }
